@@ -8,6 +8,7 @@ using UnityEngine;
 using SRML.SR.Translation;
 using MonomiPark.SlimeRancher.Regions;
 using System.Reflection;
+using EnaSlime;
 
 namespace EnaSlime
 {
@@ -50,10 +51,27 @@ namespace EnaSlime
             // END SLIMEPEDIA ENTRY: ENA SLIME
 
             // ENA PLORT TRANSLATION
-            TranslationPatcher.AddActorTranslation("l." + Ids.ENA_PLORT.ToString().ToLower(), "ENA Plort");
-            PediaRegistry.RegisterIdentifiableMapping(PediaDirector.Id.PLORTS, Ids.ENA_PLORT);
-            Identifiable.PLORT_CLASS.Add(Ids.ENA_PLORT);
-            Identifiable.NON_SLIMES_CLASS.Add(Ids.ENA_PLORT);
+
+            // YELLOW
+
+            TranslationPatcher.AddActorTranslation("l." + Ids.ENA_YELLOW_PLORT.ToString().ToLower(), "Yellow Plort");
+            PediaRegistry.RegisterIdentifiableMapping(PediaDirector.Id.PLORTS, Ids.ENA_YELLOW_PLORT);
+            Identifiable.PLORT_CLASS.Add(Ids.ENA_YELLOW_PLORT);
+            Identifiable.NON_SLIMES_CLASS.Add(Ids.ENA_YELLOW_PLORT);
+
+            // BLUE
+
+            TranslationPatcher.AddActorTranslation("l." + Ids.ENA_BLUE_PLORT.ToString().ToLower(), "Blue Plort");
+            PediaRegistry.RegisterIdentifiableMapping(PediaDirector.Id.PLORTS, Ids.ENA_BLUE_PLORT);
+            Identifiable.PLORT_CLASS.Add(Ids.ENA_BLUE_PLORT);
+            Identifiable.NON_SLIMES_CLASS.Add(Ids.ENA_BLUE_PLORT);
+
+            // SPLIT
+
+            TranslationPatcher.AddActorTranslation("l." + Ids.ENA_SPLIT_PLORT.ToString().ToLower(), "sPlIt pLoRt");
+            PediaRegistry.RegisterIdentifiableMapping(PediaDirector.Id.PLORTS, Ids.ENA_SPLIT_PLORT);
+            Identifiable.PLORT_CLASS.Add(Ids.ENA_SPLIT_PLORT);
+            Identifiable.NON_SLIMES_CLASS.Add(Ids.ENA_SPLIT_PLORT);
 
             // START ENA SLIME SPAWNER
             SRCallbacks.PreSaveGameLoad += (s =>
@@ -99,7 +117,9 @@ namespace EnaSlime
             Slime_Slime_Object.GetComponent<Vacuumable>().size = Vacuumable.Size.NORMAL;
             AmmoRegistry.RegisterAmmoPrefab(PlayerState.AmmoMode.DEFAULT, Slime_Slime_Object);
             TranslationPatcher.AddPediaTranslation("t." + Ids.ENA_SLIME.ToString().ToLower(), "ENA Slime");
-            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_SLIME, Color.blue, CreateSprite(LoadImage("ena_slime.png"))));
+            Sprite SlimeIcon = CreateSprite(LoadImage("ena_slime.png"));
+            Color PureBlue = Color.blue;
+            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_SLIME, PureBlue, SlimeIcon));
 
             //And well, registering it!
             LookupRegistry.RegisterIdentifiablePrefab(Slime_Slime_Object);
@@ -107,22 +127,53 @@ namespace EnaSlime
             // END LOAD ENA SLIME
 
             // START LOAD ENA PLORT
-            GameObject PlortTuple = EnaSlimePlort.EnaPlort();
+
+            // YELLOW
+
+            GameObject PlortTuple = EnaSlimePlort.EnaYellowPlort();
 
             GameObject Plort_Plort_Object = PlortTuple;
 
             AmmoRegistry.RegisterAmmoPrefab(PlayerState.AmmoMode.DEFAULT, Plort_Plort_Object);
             // Icon that is below is just a placeholder. You can change it to anything or add your own! 
-            Sprite PlortIcon = CreateSprite(LoadImage("ena_slime_plort.png"));
+            Sprite PlortIcon = CreateSprite(LoadImage("ena_slime_yellow_plort.png"));
             Color PureYellow = Color.yellow; // RGB   
-            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_PLORT, PureYellow, PlortIcon));
-            AmmoRegistry.RegisterSiloAmmo(x => x == SiloStorage.StorageType.NON_SLIMES || x == SiloStorage.StorageType.PLORT, Ids.ENA_PLORT);
+            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_YELLOW_PLORT, PureYellow, PlortIcon));
+            AmmoRegistry.RegisterSiloAmmo(x => x == SiloStorage.StorageType.NON_SLIMES || x == SiloStorage.StorageType.PLORT, Ids.ENA_YELLOW_PLORT);
 
             float price = 35f; //Starting price for plort   
             float saturated = 5f; //Can be anything. The higher it is, the higher the plort price changes every day. I'd recommend making it small so you don't destroy the economy lol.   
-            PlortRegistry.AddEconomyEntry(Ids.ENA_PLORT, price, saturated); //Allows it to be sold while the one below this adds it to plort market.   
-            PlortRegistry.AddPlortEntry(Ids.ENA_PLORT); //PlortRegistry.AddPlortEntry(YourCustomEnum, new ProgressDirector.ProgressType[1]{ProgressDirector.ProgressType.NONE});   
-            DroneRegistry.RegisterBasicTarget(Ids.ENA_PLORT);
+            PlortRegistry.AddEconomyEntry(Ids.ENA_YELLOW_PLORT, price, saturated); //Allows it to be sold while the one below this adds it to plort market.   
+            PlortRegistry.AddPlortEntry(Ids.ENA_YELLOW_PLORT); //PlortRegistry.AddPlortEntry(YourCustomEnum, new ProgressDirector.ProgressType[1]{ProgressDirector.ProgressType.NONE});   
+            DroneRegistry.RegisterBasicTarget(Ids.ENA_YELLOW_PLORT);
+
+            // BLUE
+
+            GameObject PlortTuple2 = EnaSlimePlort2.EnaBluePlort();
+
+            GameObject Plort_Plort_Object2 = PlortTuple2;
+
+            AmmoRegistry.RegisterAmmoPrefab(PlayerState.AmmoMode.DEFAULT, Plort_Plort_Object2);
+            // Icon that is below is just a placeholder. You can change it to anything or add your own! 
+            Sprite PlortIcon2 = CreateSprite(LoadImage("ena_slime_blue_plort.png"));
+            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_BLUE_PLORT, PureBlue, PlortIcon2));
+            AmmoRegistry.RegisterSiloAmmo(x => x == SiloStorage.StorageType.NON_SLIMES || x == SiloStorage.StorageType.PLORT, Ids.ENA_BLUE_PLORT);
+
+            PlortRegistry.AddEconomyEntry(Ids.ENA_BLUE_PLORT, price, saturated); //Allows it to be sold while the one below this adds it to plort market.   
+            PlortRegistry.AddPlortEntry(Ids.ENA_BLUE_PLORT); //PlortRegistry.AddPlortEntry(YourCustomEnum, new ProgressDirector.ProgressType[1]{ProgressDirector.ProgressType.NONE});   
+            DroneRegistry.RegisterBasicTarget(Ids.ENA_BLUE_PLORT);
+
+            // SPLIT
+            
+            GameObject PlortTuple3 = EnaSlimePlort3.EnaSplitPlort();
+
+            GameObject Plort_Plort_Object3 = PlortTuple3;
+
+            Sprite PlortIcon3 = CreateSprite(LoadImage("ena_slime_split_plort.png"));
+            Color PureGrey = Color.grey;
+            AmmoRegistry.RegisterAmmoPrefab(PlayerState.AmmoMode.DEFAULT, Plort_Plort_Object3);
+            LookupRegistry.RegisterVacEntry(VacItemDefinition.CreateVacItemDefinition(Ids.ENA_SPLIT_PLORT, PureGrey, PlortIcon3));
+            AmmoRegistry.RegisterSiloAmmo(x => x == SiloStorage.StorageType.NON_SLIMES || x == SiloStorage.StorageType.PLORT, Ids.ENA_SPLIT_PLORT);
             // END LOAD ENA PLORT
         }
 

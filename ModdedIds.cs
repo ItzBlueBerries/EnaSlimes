@@ -10,7 +10,11 @@ internal class Ids
 {
     public static readonly Identifiable.Id ENA_SLIME;
 
-    public static readonly Identifiable.Id ENA_PLORT;
+    public static readonly Identifiable.Id ENA_YELLOW_PLORT;
+
+    public static readonly Identifiable.Id ENA_BLUE_PLORT;
+
+    public static readonly Identifiable.Id ENA_SPLIT_PLORT;
 
     public static readonly PediaDirector.Id ENA_ENTRY;
 }

@@ -32,7 +32,7 @@ namespace EnaSlime
             slimeDefinition.AppearancesDefault = new SlimeAppearance[1];
             slimeDefinition.Diet.Produces = new Identifiable.Id[1]
             {
-               Ids.ENA_PLORT
+               Ids.ENA_YELLOW_PLORT
             };
             slimeDefinition.Diet.MajorFoodGroups = new SlimeEat.FoodGroup[1]
             {
@@ -60,8 +60,7 @@ namespace EnaSlime
             slimeObject.GetComponent<Identifiable>().id = Ids.ENA_SLIME;
             slimeObject.AddComponent<EnaAgitated>();
             slimeObject.AddComponent<EnaHappy>();
-            slimeObject.AddComponent<EnaFear>();
-            slimeObject.AddComponent<EnaHungry>();
+            // slimeObject.AddComponent<EnaFear>();
             UnityEngine.Object.Destroy(slimeObject.GetComponent<PinkSlimeFoodTypeTracker>());
             // APPEARANCE
             SlimeAppearance slimeAppearance = (SlimeAppearance)PrefabUtils.DeepCopyObject(enaSlimeDefinition.AppearancesDefault[0]);

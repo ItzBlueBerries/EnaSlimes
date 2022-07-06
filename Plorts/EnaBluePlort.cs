@@ -10,14 +10,14 @@ using Object = UnityEngine.Object;
 
 namespace EnaSlime
 {
-    class EnaSlimePlort
+    class EnaSlimePlort2
     {
-        public static GameObject EnaPlort()
+        public static GameObject EnaBluePlort()
         {
             GameObject Prefab = PrefabUtils.CopyPrefab(SRSingleton<GameContext>.Instance.LookupDirector.GetPrefab(Identifiable.Id.PINK_PLORT)); //It can be any plort, but pink works the best. 
-            Prefab.name = "ENA Plort";
+            Prefab.name = "Blue Plort";
 
-            Prefab.GetComponent<Identifiable>().id = Ids.ENA_PLORT;
+            Prefab.GetComponent<Identifiable>().id = Ids.ENA_BLUE_PLORT;
             Prefab.GetComponent<Vacuumable>().size = Vacuumable.Size.NORMAL;
 
             Prefab.GetComponent<MeshRenderer>().material = Object.Instantiate<Material>(Prefab.GetComponent<MeshRenderer>().material);
@@ -27,8 +27,8 @@ namespace EnaSlime
             Color EnaWhite = Color.white;
             Color EnaBlack = Color.black;
             //Pretty self explanatory. These change the color of the plort. You can set the colors to whatever you want.    
-            Prefab.GetComponent<MeshRenderer>().material.SetColor("_TopColor", EnaYellow);
-            Prefab.GetComponent<MeshRenderer>().material.SetColor("_MiddleColor", EnaGrey);
+            Prefab.GetComponent<MeshRenderer>().material.SetColor("_TopColor", EnaBlue);
+            Prefab.GetComponent<MeshRenderer>().material.SetColor("_MiddleColor", EnaBlue);
             Prefab.GetComponent<MeshRenderer>().material.SetColor("_BottomColor", EnaBlue);
 
             LookupRegistry.RegisterIdentifiablePrefab(Prefab);

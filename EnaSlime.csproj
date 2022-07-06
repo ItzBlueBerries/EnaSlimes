@@ -61,9 +61,13 @@
   <ItemGroup>
     <Compile Include="EnaBehavior.cs" />
     <Compile Include="EnaSlime.cs" />
-    <Compile Include="EnaSlimePlort.cs" />
+    <Compile Include="Plorts\EnaBluePlort.cs" />
+    <Compile Include="Plorts\EnaSplitPlort.cs" />
+    <Compile Include="Plorts\EnaYellowPlort.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="ModdedIds.cs" />
     <Compile Include="ModEntryPoint.cs" />
+    <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +76,13 @@
   <ItemGroup>
     <EmbeddedResource Include="ena_slime.png" />
     <EmbeddedResource Include="ena_slime_plort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ena_slime_blue_plort.png" />
+    <EmbeddedResource Include="ena_slime_yellow_plort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ena_slime_split_plort.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
